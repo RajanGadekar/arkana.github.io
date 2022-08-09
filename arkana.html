@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/059e114a0c.js" crossorigin="anonymous"></script>
+  <style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+</head>
+<body>
+<div class="container-fluid fixed-top  bg-dark">
+            <div class="row p-2 shadow">
+                <div class="col-5 col-md-9">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <img style="width:140px" src="http://arkana.ozariya.com/wp-content/uploads/2018/10/logo.png">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="nav">
+                        <ul style="color: white" class="navbar-nav mr-auto">
+                            <li class="nav-item float-right">
+                                <a style="color: white;margin-left:300px" class="nav-link  h5"  href="#">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: white" class="nav-link h5" href="#1">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: white" class="nav-link h5" href="#2">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: white" class="nav-link h5" href="#4">Portfolio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: white" class="nav-link h5" href="#7">Team</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: white" class="nav-link h5" href="#8">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: white" class="nav-link h5" href="#9">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="color: white" class="nav-link h5" href="#11">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                  </nav>
+                </div>
+            </div>
+        </div>
+
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <ul class="carousel-indicators">
+    {% for row in arkana_data %}
+    <li data-target="#demo" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter == 1 %} active {% endif %}"></li>
+     {% endfor %}
+  </ul>
+
+  <div class="carousel-inner">
+      {% for row in arkana_data %}
+    <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+      <img src="/{{row.arkana_img}}" alt="Los Angeles" width="100%" height="100%">
+      <div class="carousel-caption">
+        <h1 style="font-size:70px"><a style="color:yellow">CONSTRUCTION</a> SERVICES</h1>
+        <p style="margin-bottom:200px;font-size:40px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dapibus ex sed eros molestie</p>
+      </div>
+    </div>
+      {% endfor %}
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+<div class="container-fluid mt-4">
+    {% for row in arkana_dat %}
+    <div class="row">
+
+        <div  class="col-md-6 p-5">
+            <a style="color: black;text-decoration: none" class="m-5" id="1">01 -------- About Arkana</a>
+            <h2 class="m-5" style="font-weight: 700;font-size: 60px" >{{row.about}}</h2>
+            <p class="m-5">{{ row.about_para }}</p>
+            <button class="btn btn-warning m-5">Read More</button>
+            </div>
+
+        <div class="col-md-6">
+        <img style="width: 100%;height: 100%" src="/{{row.about_img}}">
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container mt-4">
+    {% for row in services %}
+    <div class="row">
+        <div  class="col-md-12 p-5 text-center">
+            <a style="color: black;text-decoration: none" class="m-5" id="2">02 -------- Services</a>
+            <h1 class="m-5"><b>{{row.service_title}}</b></h1>
+            <p class="m-5">{{row.service_para}}<br></p>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+            <div class="col-md-5">
+        <img style="width: 100%;height: 280px" src="{{row.service_img1}}">
+            </div>
+            <div class="col-md-7 p-5">
+                <h1>{{row.service_head1}}</h1>
+        <p>{{row.service_par1}}</p>
+        </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+            <div class="col-md-5">
+        <img style="width: 100%;height: 280px" src="{{row.service_img2}}">
+            </div>
+            <div class="col-md-7 p-5">
+                <h1>{{row.service_head2}}</h1>
+        <p>{{row.service_par2}}</p>
+        </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+            <div class="col-md-5">
+        <img style="width: 100%;height: 280px" src="{{row.service_img3}}">
+            </div>
+            <div class="col-md-7 p-5">
+                <h1>{{row.service_head3}}</h1>
+        <p>{{row.service_par3}}</p>
+        </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+            <div class="col-md-5">
+        <img style="width: 100%;height: 280px" src="{{row.service_img4}}">
+            </div>
+            <div class="col-md-7 p-5">
+                <h1>{{row.service_head4}}</h1>
+        <p>{{row.service_par4}}</p>
+        </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    {% for row in awesome %}
+    <div class="row">
+        <div style="text-align: center"  class="col-md-6 p-5">
+            <img style="width: 50%;height: 90%" src="{{row.awe_img}}"></div>
+        <div class="col-md-6 p-5">
+        <a style="color: black;text-decoration: none" class="m-5" id="3">03 -------- Awesome</a>
+            <h2 style="font-weight: 700;font-size: 60px" class="m-5">{{row.awe_title}}</h2>
+            <p class="m-5"><b>Why don’t we work together ?
+            </b><br>
+                {{row.awe_para}}
+            </p>
+            <button class="btn btn-warning m-5">Read More</button>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="container mt-4">
+    {% for row in project %}
+    <div class="row">
+        <div  class="col-md-12 p-5 text-center">
+            <a style="color: black;text-decoration: none" class="m-5" id="4">04 -------- Project</a>
+            <h1 class="m-5"><b>{{row.pro_title}}</b></h1>
+            <p class="m-5">{{row.pro_para}}<br></p>
+        </div>
+    </div>
+    </div>
+
+    <div class="container-fluid mt-4">
+    <div class="row">
+        <div  class="col-md-3 p-">
+        <img style="width: 100%;height: 100%" src="{{row.pro_img1}}">
+        </div>
+        <div  class="col-md-3 p-">
+        <img style="width: 100%;height: 100%" src="{{row.pro_img2}}">
+        </div>
+        <div  class="col-md-3 p-">
+        <img style="width: 100%;height: 100%" src="{{row.pro_img3}}">
+        </div>
+        <div  class="col-md-3 p-">
+        <img style="width: 100%;height: 100%" src="{{row.pro_img4}}">
+        </div>
+        <div  class="col-md-3 mt-3">
+        <img style="width: 100%;height: 100%" src="{{row.pro_img5}}">
+        </div>
+        <div  class="col-md-3 mt-3">
+        <img style="width: 100%;height: 100%" src="{{row.pro_img6}}">
+        </div>
+        <div  class="col-md-3 mt-3">
+        <img style="width: 100%;height: 100%" src="{{row.pro_img7}}">
+        </div>
+        <div  class="col-md-3 mt-3">
+        <img style="width: 100%;height: 100%" src="{{row.pro_img8}}">
+        </div>
+    </div>
+        {% endfor %}
+    </div>
+
+    <div class="container-fluid mt-4">
+        {% for row in arc %}
+    <div class="row">
+        <div  class="col-md-6 p-5">
+            <a style="color: black;text-decoration: none" class="m-5" id="5">05 -------- Architecture</a>
+            <h2 class="m-5" style="font-weight: 700;font-size: 40px" >Why Choose Us</h2>
+            <p class="m-5">{{row.arc_para}}</p>
+            <div class="row">
+            <div class="col-md-4 shadow p-4 text-center"><i style="font-size: 50px" class="{{row.arc_icon1}}"></i><br><br><p>{{row.arc_para1}}</p>
+            </div>
+            <div class="col-md-4 shadow p-4 text-center"><i style="font-size: 50px" class="{{row.arc_icon2}}"></i><br><br><p>{{row.arc_para2}}
+</p>
+            </div>
+            <div class="col-md-4 shadow p-4 text-center"><i style="font-size: 50px" class="{{row.arc_icon3}}"></i><br><br><p>{{row.arc_para3}}
+</p>
+            </div>
+            <div class="col-md-4 shadow p-4 text-center"><i style="font-size: 50px" class="{{row.arc_icon4}}"></i><br><br><p>{{row.arc_para4}}
+</p>
+            </div>
+            <div class="col-md-4 shadow p-4 text-center"><i style="font-size: 50px" class="{{row.arc_icon5}}"></i><br><br><p>{{row.arc_para5}}
+</p>
+            </div>
+            <div class="col-md-4 shadow p-4 text-center"><i style="font-size: 50px" class="{{row.arc_icon6}}"></i><br><br><p>{{row.arc_para6}}
+</p>
+            </div>
+            </div>
+            </div>
+        <div class="col-md-6 ">
+        <img style="width: 570px;height: 500px;margin-top:80px" src="{{row.arc_img}}">
+
+
+        </div>
+    </div>
+        {% endfor %}
+</div>
+
+
+
+
+    <div class="container-fluid">
+        {% for row in working %}
+    <div class="row">
+        <div style="text-align: center"  class="col-md-6">
+            <img style="width: 100%;height: 100%" src="{{row.wor_img}}"></div>
+        <div class="col-md-6 p-5">
+
+            <h2 style="font-weight: 700;font-size: 60px" class="m-5">{{row.wor_title}}</h2>
+            <a style="color: black;text-decoration: none" class="m-5" id="6">06 -------- Working</a>
+            <p class="m-5"><b>How It Works?</b><br>{{row.wor_para}}</p>
+
+
+        </div>
+    </div>
+        {% endfor %}
+</div>
+
+
+    <div  data-tilt class="container-fluid bg-warning p-5 mt-5">
+         {% for row in yellow %}
+                <div style="color: white"  class="row text-center">
+                        <div class="col-6 col-md-3  mt-2">
+                            <i style="font-size: 50px" class="{{row.yel_icon1}}"></i>
+                            <h2 class="fw-bold">{{row.yel_num1}}</h2>
+                            <p class="fw-bold ">{{row.yel_title1}}
+</p>
+                        </div>
+                        <div class="col-6 col-md-3 mt-2">
+                            <i style="font-size: 50px" class="{{row.yel_icon2}}"></i>
+                            <h2 class="fw-bold">{{row.yel_num2}}</h2>
+                            <p class="fw-bold ">{{row.yel_title2}}
+</p>
+                        </div>
+                    <div class="col-6 col-md-3  mt-2">
+                            <i style="font-size: 50px" class="{{row.yel_icon3}}"></i>
+                            <h2 class="fw-bold">{{row.yel_num3}}</h2>
+                            <p class="fw-bold ">{{row.yel_title3}}</p>
+                        </div>
+                    <div class="col-6 col-md-3  mt-2">
+                            <i style="font-size: 50px" class="{{row.yel_icon4}}"></i>
+                            <h2 class="fw-bold">{{row.yel_num4}}</h2>
+                            <p class="fw-bold ">{{row.yel_title4}}
+</p>
+                        </div>
+                </div>
+        {% endfor %}
+            </div>
+
+<div class="container mt-4">
+    {% for row in team %}
+    <div class="row">
+        <div  class="col-md-12 p-5 text-center">
+            <a style="color: black;text-decoration: none" class="m-5" id="4">04 -------- Project</a>
+            <h1 class="m-5"><b>{{row.team_title}}</b></h1>
+            <p class="m-5">{{row.team_para}}<br></p>
+        </div>
+    </div>
+    </div>
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-3"> </h3>
+            </div>
+            <div class="col-6 text-right">
+                <a style="margin-left: 300px" class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.card_img1}}">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title">{{row.card_title1}}</h4>
+                                            <p class="card-text">{{row.card_para1}}</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.card_img2}}">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title">{{row.card_title2}}</h4>
+                                            <p class="card-text">{{row.card_para2}}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.card_img3}}">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title">{{row.card_title3}}</h4>
+                                            <p class="card-text">{{row.card_para3}}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.card_img4}}">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title">{{row.card_title4}}</h4>
+                                            <p class="card-text">{{row.card_para4}}</p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.card_img5}}">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title">{{row.card_title5}}</h4>
+                                            <p class="card-text">{{row.card_para5}}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.card_img6}}">
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title">{{row.card_title6}}</h4>
+                                            <p class="card-text">{{row.card_para6}}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+<div class="container mt-4">
+    {% for row in pack %}
+    <div class="row">
+        <div  class="col-md-12 p-5 text-center">
+            <a style="color: black;text-decoration: none" class="m-5" id="8">08 -------- Parkings</a>
+            <h1 class="m-5" style="font-weight: 700;font-size: 60px"><b>{{row.pack_title}}
+</b></h1>
+            <p class="m-5">{{row.pack_para}}
+
+<br></p>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="container mt-5 bg-info">
+       <div class="row">
+          <div class="card col-md-4">
+              <h3 style="border-radius: 10px 10px 0px 50px" class="card-title bg-secondary text-center p-4">{{row.pcard_title1}}<br><b style="font-weight: 900;font-size: 50px">{{row.pcard_para1}}</b>/month
+              </h3>
+              <div class="card-body text-center">100 MB Disk Space<hr>2 Subdomains
+<hr>5 Email Accounts
+<hr>Webmail Support
+<hr>Customer Support 24/7
+
+              </div>
+              <div class="card-footer text-center"><button style="border-radius: 20px 20px 0px 20px" class="btn btn-warning p-3">Purchase</button>
+              </div>
+           </div>
+           <div class="card col-md-4">
+              <h3 style="border-radius: 10px 10px 0px 50px;background: orange;color: white" class="card-title text-center p-4">{{row.pcard_title2}}<br><b style="font-weight: 900;font-size: 50px">{{row.pcard_para2}}</b>/month
+              </h3>
+              <div class="card-body text-center">100 MB Disk Space<hr>2 Subdomains
+<hr>5 Email Accounts
+<hr>Webmail Support
+<hr>Customer Support 24/7
+
+              </div>
+              <div class="card-footer text-center"><button style="border-radius: 20px 20px 0px 20px" class="btn btn-warning p-3">Purchase</button>
+              </div>
+           </div>
+           <div class="card col-md-4">
+              <h3 style="border-radius: 10px 10px 0px 50px" class="card-title bg-secondary text-center p-4">{{row.pcard_title3}}<br><b style="font-weight: 900;font-size: 50px">{{row.pcard_para3}}</b>/month
+              </h3>
+              <div class="card-body text-center">100 MB Disk Space<hr>2 Subdomains
+<hr>5 Email Accounts
+<hr>Webmail Support
+<hr>Customer Support 24/7
+
+              </div>
+              <div class="card-footer text-center"><button style="border-radius: 20px 20px 0px 20px" class="btn btn-warning p-3">Purchase</button>
+              </div>
+           </div>
+        </div>
+    </div>
+{% endfor %}
+
+<div class="container mt-4">
+    {% for row in talk %}
+    <div class="row">
+        <div  class="col-md-12 p-5 text-center">
+            <a style="color: black;text-decoration: none" class="m-5" id="9">09 -------- Talks</a>
+            <h1 class="m-5" style="font-weight: 700;font-size: 60px"><b>{{row.talk_title}}
+
+</b></h1>
+            <p class="m-5">{{row.talk_para}}
+
+<br></p>
+        </div>
+    </div>
+    </div>
+    <section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-3"></h3>
+            </div>
+            <div class="col-6 text-right">
+                <a style="margin-left: 300px" class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators21" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators21" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators21" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.talk_img1}}">
+                                        <div class="carousel-caption d-none d-md-block">
+
+            <h3>{{row.talk_para1}}</h3>
+      </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.talk_img2}}">
+                                        <div class="carousel-caption d-none d-md-block">
+
+            <h3>{{row.talk_para2}}</h3>
+      </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.talk_img3}}">
+                                        <div class="carousel-caption d-none d-md-block">
+
+            <h3>{{row.talk_para3}}</h3>
+      </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.talk_img4}}">
+
+<div class="carousel-caption d-none d-md-block">
+
+            <h3>{{row.talk_para4}}</h3>
+      </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.talk_img5}}">
+                                        <div class="carousel-caption d-none d-md-block">
+
+            <h3>{{row.talk_para5}}</h3>
+      </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280" src="{{row.talk_img6}}">
+                                        <div class="carousel-caption d-none d-md-block">
+
+            <h3>{{row.talk_para6}}</h3>
+      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+<div class="container-fluid mt-4">
+    {% for row in test %}
+    <div class="row">
+        <div  class="col-md-6 p-5">
+            <a style="color: black;text-decoration: none" class="m-5" id="10">10 -------- Testimonials</a>
+            <h2 class="m-5" style="font-weight: 700;font-size: 60px" >{{row.test_title}}</h2>
+            <p class="m-5">{{row.test_para}}</p>
+            <button class="btn btn-warning m-5">Read More</button>
+            </div>
+        <div class="col-md-6">
+       <section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 text-right">
+                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators23" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators23" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators23" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="card">
+
+                                        <div class="card-body">
+
+                                            <p class="card-text p-4 m-5">{{row.tslide1}}
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="card">
+
+                                        <div class="card-body">
+
+                                            <p class="card-text p-4 m-5">{{row.tslide2}}
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="card">
+
+                                        <div class="card-body">
+
+                                            <p class="card-text p-4 m-5">{{row.tslide3}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<div  data-tilt class="container-fluid bg-warning p-5 mt-5">
+    {% for row in icon %}
+                <div style="color: white"  class="row text-center">
+                        <div class="col-6 col-md-2  mt-2 p-4">
+                            <img src="{{row.icon1}}">
+
+                        </div>
+                        <div class="col-6 col-md-2 mt-2 p-4">
+                            <img src="{{row.icon2}}">
+                        </div>
+                    <div class="col-6 col-md-2  mt-2 p-4">
+                        <img src="{{row.icon3}}">
+                        </div>
+                    <div class="col-6 col-md-2  mt-2 p-4">
+                        <img src="{{row.icon4}}">
+                        </div>
+                    <div class="col-6 col-md-2  mt-2 p-4">
+                        <img src="{{row.icon5}}">
+                        </div>
+                    <div class="col-6 col-md-2  mt-2 p-4">
+                        <img src="{{row.icon6}}">
+                        </div>
+                </div>
+    {% endfor %}
+            </div>
+
+<div class="container-fluid mt-4">
+    {% for row in just %}
+    <div class="row">
+        <div  class="col-md-6 p-5">
+           <iframe src="{{row.just_map}}" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        <div class="col-md-6">
+            <a style="color: black;text-decoration: none" class="m-5" id="11">11 -------- Just one call</a>
+        <h1>{{row.just_title}}</h1>
+            <p>{{row.just_para}}</p>
+        <input class="w-100 " type="text" name=""><br><br>
+            <input class="w-100 "type="text" name=""><br><br>
+            <input class="w-100 "type="text" name=""><br><br>
+             <textarea class="cols-5 w-100 h-25" placeholder=" COMMENT"></textarea><br><br>
+            <button class="btn btn-warning mb-5">Send</button>
+        </div>
+    </div>
+
+</div>
+ {% endfor %}
+<footer class="container-fluid bg-secondary p-5 mt-5">
+    {% for row in footer %}
+       <div class="row">
+         <div class="col-md-3 p-4">
+             <img style="width: 200px" src="{{row.fot_icon}}">
+           <p>{{row.fot_para}}
+<br><br>
+Monday-Thursday: 08am – 05pm<br>
+Friday: 09am – 03pm<br>
+Sunday: Closed</p>
+           </div>
+           <div class="col-md-3 p-4">
+             <h3>{{row.title1}}</h3><hr>
+               <div class="row">
+          <div class="col-md-6">
+          <ul>
+              <li>{{row.li1}}</li>
+              <li>{{row.li2}}</li>
+              <li>{{row.li3}}</li>
+              <li>{{row.li4}}</li>
+          </ul>
+          </div>
+               <div class="col-md-6">
+          <ul>
+              <li>{{row.li5}}</li>
+              <li>{{row.li6}}</li>
+              <li>{{row.li7}}</li>
+              <li>{{row.li8}}</li>
+          </ul>
+          </div>
+                   </div>
+           </div>
+           <div class="col-md-3 p-4">
+             <h3>{{row.title2}}
+</h3><hr>
+            <p>{{row.loc}}</p>
+            <br>
+            <p>{{row.phone}}</p>
+            <br>
+            <p>{{row.email}}</p>
+           </div>
+           <div class="col-md-3 p-4">
+             <h3>{{row.title3}}
+</h3><hr>
+           <div class="row">
+               <div class="col-md-4"><img style="width:100%" src="{{row.fot_img1}}">
+               </div>
+               <div class="col-md-4"><img style="width:100%" src="{{row.fot_img2}}">
+               </div>
+               <div class="col-md-4"><img style="width:100%" src="{{row.fot_img3}}">
+               </div>
+               <div class="col-md-4"><img style="width:100%" src="{{row.fot_img4}}">
+               </div>
+               <div class="col-md-4"><img style="width:100%" src="{{row.fot_img5}}">
+               </div>
+               <div class="col-md-4"><img style="width:100%" src="{{row.fot_img6}}">
+               </div>
+
+               </div>
+           </div>
+
+        </div>
+    {% endfor %}
+    </footer>
+</body>
+</html>
